@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Footer = () => {
     return (
         <footer>
@@ -5,16 +7,16 @@ const Footer = () => {
             <img src="/images/logo.png" alt="Logo" className="logo" />
             <ul>
                 <li>
-                    <a href="#">Plan du site</a>
+                    <Link to="#">Plan du site</Link>
                 </li>
                 <li>
-                    <a href="#">Mentions légales</a>
+                    <Link to="#">Mentions légales</Link>
                 </li>
                 <li>
-                    <a href="#">Cookies</a>
+                    <Link to="#">Cookies</Link>
                 </li>
                 <li>
-                    <a href="#">Haut de la page</a>
+                    <Link to="#videoContainer">Haut de la page</Link>
                 </li>
             </ul>
         </footer>
