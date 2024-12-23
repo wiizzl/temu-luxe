@@ -1,8 +1,14 @@
-const CollectionButton = () => {
+import { Link } from "react-router";
+
+type CollectionButtonProps = {
+    href: string;
+};
+
+const CollectionButton = (props: CollectionButtonProps) => {
     return (
-        <a href="#" className="collectionButton">
+        <Link to={props.href} className="collectionButton">
             Découvrir la collection
-        </a>
+        </Link>
     );
 };
 

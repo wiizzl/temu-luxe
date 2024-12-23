@@ -5,6 +5,7 @@ type CollectionCardProps = {
         image: string;
         category: string;
         title: string;
+        href: string;
     };
 };
 
@@ -17,7 +18,7 @@ const CollectionCard = (props: CollectionCardProps) => {
                     <h3>{props.item.category}</h3>
                     <h1>{props.item.title}</h1>
                 </div>
-                <CollectionButton />
+                <CollectionButton href={props.item.href} />
             </div>
         </div>
     );

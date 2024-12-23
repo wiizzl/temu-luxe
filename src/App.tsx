@@ -2,6 +2,7 @@ import "./style.css";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router";
 
 import { CollectionButton } from "./components/collection/collection-button";
 import { CollectionCard } from "./components/collection/collection-card";
@@ -11,20 +12,19 @@ import { ProductCard } from "./components/product/product-card";
 
 export default function App() {
     const collections = [
-        { image: "/images/collections/1.png", category: "Smartphones", title: "Les miniPhones" },
-        { image: "/images/collections/2.png", category: "Cuisine", title: "Les ustensiles indispensables" },
-        { image: "/images/collections/3.png", category: "Ordinateur", title: "La puissance d'AMD" },
+        { image: "/images/collections/1.png", category: "Smartphones", title: "Les miniPhones", href: "/collection" },
+        { image: "/images/collections/2.png", category: "Cuisine", title: "Les ustensiles indispensables", href: "#" },
+        { image: "/images/collections/3.png", category: "Ordinateur", title: "La puissance d'AMD", href: "#" },
     ];
 
     const products = [
-        { image: "/images/products/1.png", title: "miniPhone 2 Pro", price: 999 },
-        { image: "/images/products/2.png", title: "miniPhone 2 Lite", price: 590 },
-        { image: "/images/products/3.png", title: "tinyPhone 2 SE", price: 390 },
+        { image: "/images/products/1.png", title: "miniPhone 2 Pro", price: 999, href: "/product" },
+        { image: "/images/products/2.png", title: "miniPhone 2 Lite", price: 590, href: "#" },
+        { image: "/images/products/3.png", title: "tinyPhone 2 SE", price: 390, href: "#" },
     ];
 
     return (
         <main>
-            <Header />
             <section className="videoContainer">
                 <video loop autoPlay muted>
                     <source src="/videos/background.mp4" type="video/mp4" />
@@ -42,29 +42,38 @@ export default function App() {
                 </div>
             </section>
             <section id="collections" className="collectionsContainer">
-                {collections.map((item, index) => (
-                    <CollectionCard item={item} key={index} />
-                ))}
+                <div className="cardsContainer">
+                    {collections.map((item, index) => (
+                        <CollectionCard item={item} key={index} />
+                    ))}
+                </div>
             </section>
             <section className="adContainer">
                 <div>
                     <h3>SMARTPHONES</h3>
                     <h1>Les miniPhones</h1>
                 </div>
-                <CollectionButton />
+                <CollectionButton href="/collection" />
             </section>
             <section className="productsContainer">
-                {products.map((item, index) => (
-                    <ProductCard item={item} key={index} />
-                ))}
+                <div className="cardsContainer">
+                    {products.map((item, index) => (
+                        <ProductCard item={item} key={index} />
+                    ))}
+                </div>
             </section>
-            <Footer />
         </main>
     );
 }
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <App />
+        <Header />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+            </Routes>
+        </BrowserRouter>
+        <Footer />
     </StrictMode>
 );
