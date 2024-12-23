@@ -1,4 +1,4 @@
-# Temu luxe
+# Temu (version luxe)
 
 ![](./public/images/cover.jpg)
 
